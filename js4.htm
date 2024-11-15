@@ -4,19 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Js4</title>
+    <style>
+        .container {
+          position: absolute;
+          width: 100%;
+          max-width: 400px;
+        }
+        
+        .container img {
+          width: 100%;
+          height: auto;
+        }
+        
+        .container .btn {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          -ms-transform: translate(-50%, -50%);
+          background-color: rgb(194, 191, 191);
+          color: black;
+          font-size: 16px;
+          padding: 16px 30px;
+          border: 3px solid black;
+          cursor: pointer;
+          border-radius: 5px;
+          text-align: center;
+        }
+        
+        .container .btn:hover {
+          background-color: rgb(194, 191, 191);
+          color: black;
+        }
+        </style>
 </head>
 <body>
     <div>
-        <label for="partenza">Punto di partenza trekking (in metri)</label>
+        <label for="partenza">Punto di partenza trekking (in metri) </label>
         <input id="partenza" type="text"><br>
 
-        <label for="pausa">Punto di pausa trekking (in metri)</label>
+        <p></p>
+
+        <label for="pausa">Punto di pausa trekking (in metri) </label>
         <input id="pausa" type="text"><br>
 
-        <label for="arrivo">Punto di arrivo trekking (in metri)</label>
-        <input id="arrivo" type="text">
+        <p></p>
 
-        <button onclick="calcolaDislivello()">Calcola il dislivello</button>
+        <label for="arrivo">Punto di arrivo trekking (in metri) </label>
+        <input id="arrivo" type="text"><br>
+
+        <p></p>
+    </div>
+        
+    <div class="container">
+
+        <img src="monviso.jpg" alt="" style="width:100%">
+
+        <button class="btn" onclick="calcolaDislivello()">Calcola il dislivello</button>
+
     </div>
 
     <div>
@@ -31,7 +76,9 @@
             let b = document.getElementById("pausa").value;
             let c = document.getElementById("arrivo").value;
             let ris = c-a;
-            alert("il dislvello è: " +ris)
+            let ris2 = b-a;
+            let ris3 = c-b;
+            alert("il punto di partenza è "+a+" metri"+"\nil punto di arrivo è "+c+" metri"+"\nil punto di pausa è "+b+" metri"+"\nil dislivello tra punto di partenza e punto d'arrivo è "+ris+" metri"+"\nil dislivello tra punto di partenza e punto di pausa è "+ris2+" metri"+"\nil dislivello tra punto di pausa e punto di arrivo è "+ris3+" metri")
 
         }
 
