@@ -103,15 +103,26 @@
   opacity: 1;
   right: 0;
 }
+
+.miobottone {
+    background-color: white;
+    color: black;
+}
 </style>
 </head>
 <body>
-<p>primo esercizio</p>
-<button id="miobottone1" onclick="aprifinestra()">primo bottone</button>
-<p>secondo esercizio</p>
-<button id="miobottone2" onclick="aprifinestra2()">secondo bottone</button>
-<p>terzo esercizio</p>
+    <div class="miobottone">
+        <p><h3>primo esercizio</h3></p>
+        <button id="miobottone1" onclick="aprifinestra()">primo bottone</button>
+    </div>
+    <div class="miobottone">
+        <p><h3>secondo esercizio</h3></p>
+        <button id="miobottone2" onclick="aprifinestra2()">secondo bottone</button>
+    </div>
+    <div class="miobottone">
+        <p><h3>terzo esercizio</h3></p>
 <button id="miobottone3" onclick="aprifinestra3()">terzo bottone</button>
+    </div>
 <script>
     function aprifinestra(){
     alert("ciao ");
