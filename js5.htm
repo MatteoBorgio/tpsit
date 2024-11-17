@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js5</title>
+    <style>
+
+    label {
+        font-size: 14px;
+        color: #333;
+        margin-top: 10px;
+        display: block;
+    }
+
+        #out1 {
+        margin-top: 30px;
+        font-size: 17px;
+        font-weight: medium;
+        color: black;
+        margin-left: 10px;
+        margin-top: 10;
+        font-family: monospace;
+    }
+
+
+    .button {
+  padding: 30px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: nome;
+  outline: none;
+  color: #fff;
+  background-color: #04AA6D;
+  border: 5px solid darkgreen;
+  border-radius: 15px;
+  box-shadow: 0 0 8px rgba(76, 175, 80, 0.5);;
+  width: 400px;
+  
+
+}
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+        input[type="text"] {
+            background-color: #f1f1f1;
+            border: 2px solid #ddd;
+            padding: 10px;
+            width: 20%;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            border-color: #4CAF50;
+            box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+            outline: none;
+        }
+
+    </style>
+
+    <p><h2>Js5: media voti</h2></p>
+
+</head>
+<body>
+    <div class="input">
+        
+        <p></p>
+
+        <label for="nome"><h4>Inserisci il tuo nome: </h4></label>
+        <input id="nome" type="text">
+
+        <label for="voto1"><h4>Inserisci il primo voto: </h4></label>
+        <input id="voto1" type="text">
+
+        <label for="voto2"><h4>Inserisci il tuo secondo voto: </h4></label>
+        <input id="voto2" type="text">
+
+        <label for="voto3"><h4>Inserisci il terzo voto: </h4></label>
+        <input id="voto3" type="text">
+
+        <label for="voto4"><h4>Inserisci il tuo quarto voto: </h4></label>
+        <input id="voto4" type="text">
+
+        <label for="voto5"><h4>Inserisci il tuo quinto voto: </h4></label>
+        <input id="voto5" type="text">
+
+        <p></p>
+
+    </div>
+
+    <p></p>
+
+        <div>
+
+            <button class="button" onclick="gestisciCalcolo()">Calcola la media</button>
+
+        </div>
+
+        <div>
+
+        <p id="out1"></p>
+
+        </div>
+
+    <script>
+
+        function calcolaMedia(voto1, voto2, voto3, voto4, voto5) {
+            return (voto1 + voto2 + voto3 + voto4 + voto5) / 5;
+        }
+
+        function gestisciCalcolo() {
+            const nome = document.getElementById('nome').value;
+            const voto1 = parseFloat(document.getElementById('voto1').value);
+            const voto2 = parseFloat(document.getElementById('voto2').value);
+            const voto3 = parseFloat(document.getElementById('voto3').value);
+            const voto4 = parseFloat(document.getElementById('voto4').value);
+            const voto5 = parseFloat(document.getElementById('voto5').value);
+        
+            if (isNaN(voto1) || isNaN(voto2) || isNaN(voto3) || isNaN(voto4) || isNaN(voto5)) {
+                document.getElementById('out1').innerText = "Per favore, inserisci tutti i voti correttamente.";
+                return;
+            }
+
+            const media = calcolaMedia(voto1, voto2, voto3, voto4, voto5);
+
+            document.getElementById('out1').innerText = "Il risultato della media dei voti di " + nome + " è: " + media.toFixed(2);
+        }
+
+
+
+
+
+    </script>
+    
+</body>
+</html>
