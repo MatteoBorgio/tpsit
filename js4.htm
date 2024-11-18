@@ -1,142 +1,135 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Js4</title>
+    <title>Js4: Calcolo Dislivello</title>
     <style>
         .container {
-          position: absolute;
-          width: 100%;
-          max-width: 400px;
+            position: absolute;
+            width: 100%;
+            max-width: 400px;
         }
         
         .container img {
-          width: 100%;
-          height: auto;
+            width: 100%;
+            height: auto;
         }
         
         .container .btn {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          -ms-transform: translate(-50%, -50%);
-          background-color: rgb(194, 191, 191);
-          color: black;
-          font-size: 16px;
-          padding: 16px 30px;
-          border: 3px solid black;
-          cursor: pointer;
-          border-radius: 5px;
-          text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            background-color: rgb(194, 191, 191);
+            color: black;
+            font-size: 16px;
+            padding: 16px 30px;
+            border: 3px solid black;
+            cursor: pointer;
+            border-radius: 5px;
+            text-align: center;
         }
         
         .container .btn:hover {
-          background-color: rgb(194, 191, 191);
-          color: black;
+            background-color: rgb(194, 191, 191);
+            color: black;
         }
 
         .input {
-        background-color: white;
-        color: black;
-        border: 2px solid #ccc;
-        padding: 12px 20px;
-        width: 100%;
-        margin-bottom: 15px;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease;
-    }
+            background-color: white;
+            color: black;
+            border: 2px solid #ccc;
+            padding: 12px 20px;
+            width: 100%;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
 
         .input:focus {
-        border-color: #4CAF50; 
-        box-shadow: 0 0 8px rgba(76, 175, 80, 0.5); 
-        outline: none; 
-    }
+            border-color: #4CAF50; 
+            box-shadow: 0 0 8px rgba(76, 175, 80, 0.5); 
+            outline: none; 
+        }
 
-   
         label {
-        font-size: 14px;
-        color: #333;
-        margin-top: 10px;
-        display: block;
-    }
+            font-size: 14px;
+            color: #333;
+            margin-top: 10px;
+            display: block;
+        }
 
         #out1 {
-        margin-top: 20px;
-        font-size: 16px;
-        font-weight: bold;
-        color: #333;
-    }
+            margin-top: 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
 
         img {
-        width: 100%;
-        border-radius: 8px; 
-    }
-
-
-        </style>
-        <p><h2><b>Js4: input e calcoli</b></h2></p>
+            width: 100%;
+            border-radius: 8px; 
+        }
+        
+    </style>
 </head>
 <body>
-    <div class="input">
-        <p></p>
+    <h2><b>Js4: Calcolo del dislivello</b></h2>
 
-        <label for="partenza">Punto di partenza trekking (in metri) </label>
+    <div class="input">
+
+        <label for="partenza">Punto di partenza trekking (in metri):</label>
         <input id="partenza" type="text"><br>
 
-        <p></p>
-
-        <label for="pausa">Punto di pausa trekking (in metri) </label>
+        <label for="pausa">Punto di pausa trekking (in metri):</label>
         <input id="pausa" type="text"><br>
 
-        <p></p>
-
-        <label for="arrivo">Punto di arrivo trekking (in metri) </label>
+        <label for="arrivo">Punto di arrivo trekking (in metri):</label>
         <input id="arrivo" type="text"><br>
 
-        <p></p>
     </div>
-        <p></p>
+
     <div class="container">
 
-        <img src="monviso.jpg" alt="" style="width:100%">
+        <img src="monviso.jpg" alt="Monviso" style="width:100%">
 
         <button class="btn" onclick="calcolaDislivello()">Calcola il dislivello</button>
-
     </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+
     <div id="out1">
 
-        <p id = "out1"></p>   
+        <p id="out1"></p>  
+
+        <p id="out2"></p>
+
+        <p id="out3"></p>
 
     </div>
 
     <script>
         function calcolaDislivello() {
-            let a = document.getElementById("partenza").value;
-            let b = document.getElementById("pausa").value;
-            let c = document.getElementById("arrivo").value;
-            let ris = c-a;
-            let ris2 = b-a;
-            let ris3 = c-b;
-            document.getElementById('out1').innerText = "Il dislvello tra il punto di partenza e il punto di pausa è "+ris2;
-            document.getElementById('out1').innerText = "Il dislvello tra il punto di arrivo e il punto di pausa è "+ris1;
-            document.getElementById('out1').innerText = "Il dislvello tra il punto di partenza e il punto di arrivo è "+ris3;
+
+            let a = parseFloat(document.getElementById("partenza").value);
+            let b = parseFloat(document.getElementById("pausa").value);
+            let c = parseFloat(document.getElementById("arrivo").value);
+
+            if (isNaN(a) || isNaN(b) || isNaN(c)) {
+                alert("Per favore inserisci valori numerici validi.");
+                return;
+            }
+
+            let ris = c - a;
+            let ris2 = b - a;
+            let ris3 = c - b;
+
+
+            document.getElementById("out1").innerText = "Il dislivello tra il punto di partenza e il punto di pausa è " + ris2 + " metri.";
+            document.getElementById("out2").innerText = "Il dislivello tra il punto di arrivo e il punto di pausa è " + ris3 + " metri.";
+            document.getElementById("out3").innerText = "Il dislivello tra il punto di partenza e il punto di arrivo è " + ris + " metri.";
         }
-
-
     </script>
-    
 </body>
 </html>
