@@ -121,8 +121,9 @@
             let ris = c-a;
             let ris2 = b-a;
             let ris3 = c-b;
-            alert("il punto di partenza è "+a+" metri"+"\nil punto di arrivo è "+c+" metri"+"\nil punto di pausa è "+b+" metri"+"\nil dislivello tra punto di partenza e punto d'arrivo è "+ris+" metri"+"\nil dislivello tra punto di partenza e punto di pausa è "+ris2+" metri"+"\nil dislivello tra punto di pausa e punto di arrivo è "+ris3+" metri")
-
+            document.getElementById('out1').innerText = "Il dislvello tra il punto di partenza e il punto di pausa è "+ris2;
+            document.getElementById('out1').innerText = "Il dislvello tra il punto di arrivo e il punto di pausa è "+ris1;
+            document.getElementById('out1').innerText = "Il dislvello tra il punto di partenza e il punto di arrivo è "+ris3;
         }
 
 
