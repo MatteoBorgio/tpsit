@@ -74,13 +74,15 @@
             border-radius: 8px; 
         }
         
+        .results {
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
     <h2><b>Js4: Calcolo del dislivello</b></h2>
 
     <div class="input">
-
         <label for="partenza">Punto di partenza trekking (in metri):</label>
         <input id="partenza" type="text"><br>
 
@@ -89,29 +91,21 @@
 
         <label for="arrivo">Punto di arrivo trekking (in metri):</label>
         <input id="arrivo" type="text"><br>
-
     </div>
 
     <div class="container">
-
         <img src="monviso.jpg" alt="Monviso" style="width:100%">
-
         <button class="btn" onclick="calcolaDislivello()">Calcola il dislivello</button>
     </div>
 
-    <div id="out1">
-
-        <p id="out1"></p>  
-
+    <div class="results">
+        <p id="out1"></p>   
         <p id="out2"></p>
-
         <p id="out3"></p>
-
     </div>
 
     <script>
         function calcolaDislivello() {
-
             let a = parseFloat(document.getElementById("partenza").value);
             let b = parseFloat(document.getElementById("pausa").value);
             let c = parseFloat(document.getElementById("arrivo").value);
@@ -124,7 +118,6 @@
             let ris = c - a;
             let ris2 = b - a;
             let ris3 = c - b;
-
 
             document.getElementById("out1").innerText = "Il dislivello tra il punto di partenza e il punto di pausa è " + ris2 + " metri.";
             document.getElementById("out2").innerText = "Il dislivello tra il punto di arrivo e il punto di pausa è " + ris3 + " metri.";
