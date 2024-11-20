@@ -1,119 +1,140 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Js5</title>
+    <title>Calcola la Media dei Voti</title>
     <style>
+        /* Reset globale */
+        body, h2, h4, p {
+            margin: 0;
+            padding: 0;
+        }
 
-    label {
-        font-size: 14px;
-        color: #333;
-        margin-top: 10px;
-        display: block;
-    }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #00b09b, #96c93d); 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+            overflow: hidden;
+        }
 
-        #out1 {
-        margin-top: 30px;
-        font-size: 17px;
-        font-weight: medium;
-        color: black;
-        margin-left: 10px;
-        margin-top: 10;
-        font-family: monospace;
-    }
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);  
+            width: 100%;
+            max-width: 450px;  
+            text-align: center;
+            margin: 0 20px; 
+        }
 
+        h2 {
+            color: #00b09b;
+            font-size: 32px;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
 
-    .button {
-  padding: 30px;
-  font-size: 24px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: nome;
-  outline: none;
-  color: #fff;
-  background-color: #04AA6D;
-  border: 5px solid darkgreen;
-  border-radius: 15px;
-  box-shadow: 0 0 8px rgba(76, 175, 80, 0.5);;
-  width: 400px;
-  
+        label {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 10px;
+            text-align: left;
+            font-weight: bold;
+            color: #333;
+        }
 
-}
-
-.button:hover {background-color: #3e8e41}
-
-.button:active {
-  background-color: #3e8e41;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
-}
         input[type="text"] {
-            background-color: #f1f1f1;
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
             border: 2px solid #ddd;
-            padding: 10px;
-            width: 20%;
-            margin-top: 5px;
-            margin-bottom: 5px;
             border-radius: 8px;
             font-size: 16px;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            box-sizing: border-box; 
         }
 
         input[type="text"]:focus {
-            border-color: #4CAF50;
-            box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+            border-color: #00b09b;
+            box-shadow: 0 0 8px rgba(0, 176, 155, 0.4);
             outline: none;
         }
 
+        #nome {
+            background-color: #f0f8ff; 
+            border: 2px solid #4682b4;  
+            color: #333;  
+            font-weight: bold;
+        }
+
+        .button {
+            background-color: #00b09b;
+            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.1s;
+            box-shadow: 0 5px 15px rgba(0, 176, 155, 0.3);
+            margin-top: 20px;
+        }
+
+        .button:hover {
+            background-color: #007c68;
+        }
+
+        .button:active {
+            transform: translateY(2px);
+        }
+
+        #out1 {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: 500;
+            color: #333;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+        }
+
     </style>
-
-    <p><h2>Js5: media voti</h2></p>
-
 </head>
 <body>
-    <div class="input">
-        
-        <p></p>
 
-        <label for="nome"><h4>Inserisci il tuo nome: </h4></label>
+    <div class="container">
+        <h2>Calcola la Media dei Voti</h2>
+        
+        <label for="nome">Inserisci il tuo nome:</label>
         <input id="nome" type="text">
 
-        <label for="voto1"><h4>Inserisci il primo voto: </h4></label>
+        <label for="voto1">Inserisci il primo voto:</label>
         <input id="voto1" type="text">
 
-        <label for="voto2"><h4>Inserisci il tuo secondo voto: </h4></label>
+        <label for="voto2">Inserisci il secondo voto:</label>
         <input id="voto2" type="text">
 
-        <label for="voto3"><h4>Inserisci il terzo voto: </h4></label>
+        <label for="voto3">Inserisci il terzo voto:</label>
         <input id="voto3" type="text">
 
-        <label for="voto4"><h4>Inserisci il tuo quarto voto: </h4></label>
+        <label for="voto4">Inserisci il quarto voto:</label>
         <input id="voto4" type="text">
 
-        <label for="voto5"><h4>Inserisci il tuo quinto voto: </h4></label>
+        <label for="voto5">Inserisci il quinto voto:</label>
         <input id="voto5" type="text">
 
-        <p></p>
-
-    </div>
-
-    <p></p>
-
-        <div>
-
-            <button class="button" onclick="gestisciCalcolo()">Calcola la media</button>
-
-        </div>
-
-        <div>
+        <button class="button" onclick="gestisciCalcolo()">Calcola la media</button>
 
         <p id="out1"></p>
-
-        </div>
+    </div>
 
     <script>
-
         function calcolaMedia(voto1, voto2, voto3, voto4, voto5) {
             return (voto1 + voto2 + voto3 + voto4 + voto5) / 5;
         }
@@ -126,21 +147,16 @@
             const voto4 = parseFloat(document.getElementById('voto4').value);
             const voto5 = parseFloat(document.getElementById('voto5').value);
         
-            if (isNaN(voto1) || isNaN(voto2) || isNaN(voto3) || isNaN(voto4) || isNaN(voto5)) {
-                document.getElementById('out1').innerText = "Per favore, inserisci tutti i voti correttamente.";
+            if (!nome || isNaN(voto1) || isNaN(voto2) || isNaN(voto3) || isNaN(voto4) || isNaN(voto5)) {
+                document.getElementById('out1').innerText = "Per favore, inserisci tutti i dati correttamente.";
                 return;
             }
 
             const media = calcolaMedia(voto1, voto2, voto3, voto4, voto5);
-
-            document.getElementById('out1').innerText = "Il risultato della media dei voti di " + nome + " è: " + media.toFixed(2);
+            document.getElementById('out1').innerText = "La media dei voti di " + nome + " è: " + media.toFixed(2);
         }
-
-
-
-
-
     </script>
-    
+
 </body>
 </html>
+
