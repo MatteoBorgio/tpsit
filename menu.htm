@@ -4,24 +4,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
+
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
+  background: #f4f4f9;
+  color: #333;
 }
 
 .topnav {
   overflow: hidden;
   background-color: #333;
+  border-bottom: 2px solid #04AA6D;
 }
 
 .topnav a {
   float: left;
   display: block;
-  color: #f2f2f2;
+  color: white;
   text-align: center;
-  padding: 14px 16px;
+  padding: 16px 20px;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
 }
 
 .topnav a:hover {
@@ -61,8 +66,75 @@ body {
 }
 
 .pagina {
-  margin: 10px;
+  padding: 30px;
+  text-align: center;
+  background: linear-gradient(135deg, #f4f4f9, #fff);
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  font-size: 32px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+h4 {
+  font-size: 24px;
+  color: #333;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  font-size: 18px;
+}
+
+ul li {
+  background: #04AA6D;
+  color: white;
   padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.icon-container {
+  margin: 20px 0;
+}
+
+.icon-container i {
+  font-size: 40px;
+  margin: 10px;
+  color: #04AA6D;
+  transition: color 0.3s ease;
+}
+
+.icon-container i:hover {
+  color: #333;
+}
+
+@media screen and (max-width: 600px) {
+  .pagina {
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+
+  h4 {
+    font-size: 20px;
+  }
+
+  ul li {
+    font-size: 16px;
+  }
+
+  .icon-container i {
+    font-size: 30px;
+  }
 }
 
 </style>
@@ -71,27 +143,44 @@ body {
 
 <div class="topnav" id="myTopnav">
   <a href="menu.htm" class="active">Home</a>
-  <a href="javaScript.htm">esercizi java script</a>
-  <a href="htmlcss.htm">Esercizi Html/css</a>
-  <a href="#informazioni su di me">Scheda personale</a>
+  <a href="javaScript.htm">Esercizi JavaScript</a>
+  <a href="htmlcss.htm">Esercizi HTML/CSS</a>
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
     <i class="fa fa-bars"></i>
+  <a href="Scheda personale.htm">Informazioni su di me</a>
   </a>
 </div>
 
-<div style="padding-left:16px">
+<div class="pagina">
   <h2>Benvenuti nel menù degli esercizi di Matteo Borgio</h2>
-  <p><h4>Esercizi riguardanti:</h4></p>
-  <p>
-    <ul>
-      <li>Java script</li>
-      <p></p>
-      <li>Html</li>
-      <p></p>
-      <li>CSS</li>
-    </ul>
-  </p>
+  <h4>Esercizi riguardanti:</h4>
+  <ul>
+    <li>JavaScript</li>
+    <li>HTML</li>
+    <li>CSS</li>
+  </ul>
+
+  <div class="icon-container">
+    <i class="fa fa-code"></i>
+    <i class="fa fa-html5"></i>
+    <i class="fa fa-css3"></i>
+  </div>
 </div>
+
+<script>
+function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+</script>
+
+</body>
+</html>
+
 
 
 </body>
