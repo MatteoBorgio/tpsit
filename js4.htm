@@ -5,114 +5,126 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Js4: Calcolo Dislivello</title>
     <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fb;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        
+        h2 {
+            text-align: center;
+            font-size: 26px;
+            color: #2c3e50;
+            margin-top: 20px;
+        }
+
         .container {
-            position: absolute;
+            position: relative;
             width: 100%;
-            max-width: 400px;
-        }
-        
-        .container img {
-            width: 100%;
-            height: auto;
-        }
-        
-        .container .btn {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            -ms-transform: translate(-50%, -50%);
-            background-color: rgb(194, 191, 191);
-            color: black;
-            font-size: 16px;
-            padding: 16px 30px;
-            border: 3px solid black;
-            cursor: pointer;
-            border-radius: 5px;
+            max-width: 450px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
-        
-        .container .btn:hover {
-            background-color: rgb(194, 191, 191);
-            color: black;
+
+        .container img {
+            width: 100%;
+            border-radius: 12px;
         }
 
         .input {
-            background-color: white;
-            color: black;
-            border: 2px solid #ccc;
-            padding: 12px 20px;
-            width: 100%;
-            margin-bottom: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .input:focus {
-            border-color: #4CAF50; 
-            box-shadow: 0 0 8px rgba(76, 175, 80, 0.5); 
-            outline: none; 
+            margin: 20px 0;
         }
 
         label {
-            font-size: 14px;
-            color: #333;
-            margin-top: 10px;
-            display: block;
-        }
-
-        #out1 {
-            margin-top: 20px;
             font-size: 16px;
             color: #333;
+            display: block;
+            margin-bottom: 8px;
+            text-align: left;
         }
 
-        img {
+        .input input {
             width: 100%;
-            border-radius: 8px; 
+            padding: 12px;
+            margin: 8px 0;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 16px;
+            background-color: #f9f9f9;
+            transition: all 0.3s ease;
         }
-        
-        .results {
+
+        .input input:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 8px rgba(52, 152, 219, 0.5);
+            outline: none;
+        }
+
+        .btn {
+            display: inline-block;
             margin-top: 20px;
+            background-color: #3498db;
+            color: #fff;
+            padding: 14px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .btn:active {
+            transform: translateY(2px);
+        }
+
+        .results {
+            margin-top: 30px;
+            text-align: left;
+            font-size: 18px;
+            color: #333;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .results p {
+            margin: 8px 0;
         }
     </style>
 </head>
 <body>
-    <h2><b>Js4: Calcolo del dislivello</b></h2>
-
-    <div class="input">
-        <label for="partenza">Punto di partenza trekking (in metri):</label>
-        <input id="partenza" type="text"><br>
-
-        <label for="pausa">Punto di pausa trekking (in metri):</label>
-        <input id="pausa" type="text"><br>
-
-        <label for="arrivo">Punto di arrivo trekking (in metri):</label>
-        <input id="arrivo" type="text"><br>
-    </div>
+    <h2><b>Calcolo Dislivello Trekking</b></h2>
 
     <div class="container">
+        <div class="input">
+            <label for="partenza">Punto di partenza (in metri):</label>
+            <input id="partenza" type="number" placeholder="Inserisci altezza punto di partenza"><br>
 
-        <img src="monviso.jpg" alt="Monviso" style="width:100%">
+            <label for="pausa">Punto di pausa (in metri):</label>
+            <input id="pausa" type="number" placeholder="Inserisci altezza punto di pausa"><br>
+
+            <label for="arrivo">Punto di arrivo (in metri):</label>
+            <input id="arrivo" type="number" placeholder="Inserisci altezza punto di arrivo"><br>
+        </div>
+
         <button class="btn" onclick="calcolaDislivello()">Calcola il dislivello</button>
 
+        <img src="monviso.jpg" alt="Monviso" style="width:100%; margin-top: 20px;">
     </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+
     <div class="results">
         <p id="out1"></p>   
         <p id="out2"></p>
@@ -134,10 +146,11 @@
             let ris2 = b - a;
             let ris3 = c - b;
 
-            document.getElementById("out1").innerText = "Il dislivello tra il punto di partenza e il punto di pausa è " + ris2 + " metri.";
-            document.getElementById("out2").innerText = "Il dislivello tra il punto di arrivo e il punto di pausa è " + ris3 + " metri.";
-            document.getElementById("out3").innerText = "Il dislivello tra il punto di partenza e il punto di arrivo è " + ris + " metri.";
+            document.getElementById("out1").innerText = "Dislivello tra il punto di partenza e il punto di pausa: " + ris2 + " metri.";
+            document.getElementById("out2").innerText = "Dislivello tra il punto di arrivo e il punto di pausa: " + ris3 + " metri.";
+            document.getElementById("out3").innerText = "Dislivello tra il punto di partenza e il punto di arrivo: " + ris + " metri.";
         }
     </script>
 </body>
 </html>
+
