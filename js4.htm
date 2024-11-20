@@ -12,7 +12,7 @@
             padding: 0;
             color: #333;
         }
-        
+
         h2 {
             text-align: center;
             font-size: 26px;
@@ -91,18 +91,42 @@
 
         .results {
             margin-top: 30px;
-            text-align: left;
-            font-size: 18px;
-            color: #333;
-            background-color: #f9f9f9;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
         }
 
-        .results p {
-            margin: 8px 0;
+        .result-card {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            font-size: 18px;
+            transition: transform 0.3s ease;
         }
+
+        .result-card:hover {
+            transform: scale(1.05);
+        }
+
+        .positive {
+            border-left: 6px solid #27ae60;
+            background-color: #eaf8e6;
+            color: #27ae60;
+        }
+
+        .negative {
+            border-left: 6px solid #e74c3c;
+            background-color: #fce4e4;
+            color: #e74c3c;
+        }
+
+        .neutral {
+            border-left: 6px solid #f39c12;
+            background-color: #fef2e2;
+            color: #f39c12;
+        }
+
     </style>
 </head>
 <body>
@@ -126,9 +150,9 @@
     </div>
 
     <div class="results">
-        <p id="out1"></p>   
-        <p id="out2"></p>
-        <p id="out3"></p>
+        <div id="out1" class="result-card"></div>
+        <div id="out2" class="result-card"></div>
+        <div id="out3" class="result-card"></div>
     </div>
 
     <script>
@@ -146,9 +170,25 @@
             let ris2 = b - a;
             let ris3 = c - b;
 
-            document.getElementById("out1").innerText = "Dislivello tra il punto di partenza e il punto di pausa: " + ris2 + " metri.";
-            document.getElementById("out2").innerText = "Dislivello tra il punto di arrivo e il punto di pausa: " + ris3 + " metri.";
-            document.getElementById("out3").innerText = "Dislivello tra il punto di partenza e il punto di arrivo: " + ris + " metri.";
+            displayResult("out1", "Dislivello tra il punto di partenza e il punto di pausa", ris2);
+            displayResult("out2", "Dislivello tra il punto di arrivo e il punto di pausa", ris3);
+            displayResult("out3", "Dislivello tra il punto di partenza e il punto di arrivo", ris);
+        }
+
+        function displayResult(id, label, value) {
+            let resultElement = document.getElementById(id);
+            resultElement.innerText = `${label}: ${value} metri`;
+
+            if (value > 0) {
+                resultElement.classList.add("positive");
+                resultElement.classList.remove("negative", "neutral");
+            } else if (value < 0) {
+                resultElement.classList.add("negative");
+                resultElement.classList.remove("positive", "neutral");
+            } else {
+                resultElement.classList.add("neutral");
+                resultElement.classList.remove("positive", "negative");
+            }
         }
     </script>
 </body>
