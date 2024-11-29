@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js5 interval</title>
+</head>
+<body>
+
+    <h1>Lezione sul setInterval</h1>
+
+    <p>Il setInterval è un comando per
+        creare un temporizzatore, cioè una chiamata ad una
+        funzione ogni n millisecondi.
+    </p>
+
+    <button onclick="start()">Test sul click</button>
+
+    <div>
+            <p id="out1"></p>
+    </div>
+
+    <script>
+        let n = 0; 
+        
+        function start() {
+            setInterval(getTime, 100); 
+        } 
+
+        function getTime() {
+            n += 1; 
+            document.getElementById("out1").innerHTML = n; 
+        }
+    </script>
+
+</body>
+</html>
