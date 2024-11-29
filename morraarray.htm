@@ -1,57 +1,112 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Morra array1</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Morra Array 1</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            margin-top: 1%;
+        }
 
-    
-
-
-
-
-
-</head>
-<body>
-
-  <p id="out1"></p>
-
-  <p><h2>Bot tira: </h2></p>
-
-  <button onclick="tiro_morra_bot()">Start tiro</button>
-
-  <p id="out2"></p>
-
-
-
-
-
-    <script>
-
-        let numero_casuale = 0;
-
-        setInterval(tiro_morra_bot, 1000);
-        
-        function tiro_morra_bot(){
-
-            numero_casuale = Math.floor(Math.random()*3);
-            // genera numeri interi tra O e 3 dove 0 è incluso, 3 escluso
-            document.getElementById("out1").innerHTML = numero_casuale
-
-            // un array è una lista di oggetti omogenei tra loro; 
-            // è un insieme di variabili numerate omogenee tra loro
-            // è una struttura di dati usata in informatica per memorizzare una collezione di elementi in una sequenza ordinata
-            // ogni elemento dell'array è identificato da un indice o posizione numerica, che consente di accedervi direttamente
-
-            let morra_array = ["sasso", " carta", " forbice"]
-
-            document.getElementById("out1").innerHTML = morra_array;
-            document.getElementById("out2").innerHTML = morra_array[numero_casuale];
-
+        #out1, #out2, #out3 {
+            font-size: 20px;
+            margin-top: 10px;
         }
 
 
-    </script>
-    
+        
+    </style>
+</head>
+
+<body>
+
+    <h1>Morra Cinese</h1>
+
+    <h3>Giocatore 1</h3>
+    <p id="out1"></p>
+
+    <h3>Giocatore 2</h3>
+    <p id="out2"></p>
+
+    <h3>Punteggio finale</h3>
+    <p id="out3"></p>
+
+    <div class="button">
+        <button onclick="iniziaPartita()">Tira entrambi</button>
+    </div>
+
+    <div class="button">
+        <button onclick="finisci_partita()">Interrompi partita</button>
+    </div>
+
+    <script>
+        let morra_array = ["Sasso", "Carta", "Forbice"];
+        let giocatore1;
+        let giocatore2;
+        let intervalId = 0;
+
+        function iniziaPartita() {
+            if (intervalId === 0) {
+                intervalId = setInterval(tira_entrambi, 1000); 
+            }
+        }
+
+        function tira_entrambi() {
+            let numero_casuale1 = Math.floor(Math.random() * 3);
+            giocatore1 = morra_array[numero_casuale1];
+            document.getElementById("out1").innerHTML = "Il giocatore 1 ha scelto " + giocatore1;
+
+            let numero_casuale2 = Math.floor(Math.random() * 3);
+            giocatore2 = morra_array[numero_casuale2];
+            document.getElementById("out2").innerHTML = "Il giocatore 2 ha scelto " + giocatore2;
+
+            risultato_morra();
+        }
+
+        function risultato_morra() {
+            let risultato_array = ["Pareggio", "Giocatore 1 vince", "Giocatore 2 vince"];
+            let risultato;
+
+            if (!giocatore1 || !giocatore2) {
+                document.getElementById("out3").innerHTML = "Entrambi i giocatori devono fare il tiro!";
+                return;
+            }
+
+            if (giocatore1 === giocatore2) {
+                risultato = risultato_array[0];
+            } else if (
+                (giocatore1 === "Sasso" && giocatore2 === "Carta") ||
+                (giocatore1 === "Carta" && giocatore2 === "Forbice") ||
+                (giocatore1 === "Forbice" && giocatore2 === "Sasso")
+            ) {
+                risultato = risultato_array[2];
+            } else {
+                risultato = risultato_array[1];
+            }
+
+            document.getElementById("out3").innerHTML = risultato;
+        }
+
+        function finisci_partita() {
+            clearInterval(intervalId);
+            intervalId = 0;
+            document.getElementById("out1").innerHTML = "";
+            document.getElementById("out2").innerHTML = "";
+            document.getElementById("out3").innerHTML = "";
+            document.getElementById("out1").style.display = "none";
+            document.getElementById("out2").style.display = "none";
+            document.getElementById("out3").style.display = "none";
+        }
+
+    </script> 
+
 </body>
 </html>
