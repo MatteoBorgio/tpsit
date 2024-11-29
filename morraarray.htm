@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morra array1</title>
+
+    
+
+
+
+
+
+</head>
+<body>
+
+  <p id="out1"></p>
+
+  <p><h2>Bot tira: </h2></p>
+
+  <button onclick="tiro_morra_bot()">Start tiro</button>
+
+  <p id="out2"></p>
+
+
+
+
+
+    <script>
+
+        let numero_casuale = 0;
+
+        setInterval(tiro_morra_bot, 1000);
+        
+        function tiro_morra_bot(){
+
+            numero_casuale = Math.floor(Math.random()*3);
+            // genera numeri interi tra O e 3 dove 0 è incluso, 3 escluso
+            document.getElementById("out1").innerHTML = numero_casuale
+
+            // un array è una lista di oggetti omogenei tra loro; 
+            // è un insieme di variabili numerate omogenee tra loro
+            // è una struttura di dati usata in informatica per memorizzare una collezione di elementi in una sequenza ordinata
+            // ogni elemento dell'array è identificato da un indice o posizione numerica, che consente di accedervi direttamente
+
+            let morra_array = ["sasso", " carta", " forbice"]
+
+            document.getElementById("out1").innerHTML = morra_array;
+            document.getElementById("out2").innerHTML = morra_array[numero_casuale];
+
+        }
+
+
+    </script>
+    
+</body>
+</html>
