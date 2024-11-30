@@ -8,34 +8,98 @@
     <style>
 
         body {
-            margin: 10px;
+            margin: 1%;
             font-family: 'Arial', sans-serif;
+            justify-content: center;
             text-align: center;
             align-items: center;
             display: flex;
             flex-direction: column;
             margin-top: 1%;
+            background: linear-gradient(to right, blue, lightblue);
         }
 
-        #out1, #out2, #out3, #out4, #out5{
+        #out1, #out2, #out3, #out4, #out5, #out6{
             font-family: 'Courier New', Courier, monospace;
             font-size: 20px;
             margin-top: 10px;
         }
 
         .container {
-            width: auto;
+            background-color: lightblue;
+            padding: 4%;
+            border-radius: 10%;
+            box-shadow: 0 1% 3% rgba(0, 0, 0, 0.15);  
+            width: 100%;
+            max-width: 500px;  
             text-align: center;
-            align-items: center;
+            margin: 0 2%; 
+        }
+
+        h1 {
+            color: blue;
+            padding: 1%;
+            font-weight: bold;
+            font-size: 30px;
+            margin-bottom: 1%;
+        }
+
+        label {
             display: flex;
-            flex-direction: column;
-            margin-top: 1%;
-            padding: 10%;
-            border: 1px solid green;
-            border-radius: 5px;
-            
+            font-size: 16px;
+            margin-top: 4%;
+            margin-bottom: 2%;
+            text-align: left;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 2%;
+            margin-bottom: 3%;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            box-sizing: border-box; 
+        }
+
+        input[type="number"]:focus {
+            border-color: lightblue;
+            box-shadow: 0 0 8px rgba(0, 176, 155, 0.4);
+            outline: none;
+        }
+
+        button {
+            width: auto;
+            padding: 3% 4%;
+            font-size: 20px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: blue;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 9px #999;
             
         }
+
+        .button:hover {background-color: rgb(47, 47, 252)}
+
+        .button:active {
+            background-color: rgb(6, 6, 134);
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+
+        
+
+
+
+
         
     </style>
 </head>
@@ -43,14 +107,13 @@
 <body>
 
     <div class="container">
+
     <h1>Morra Cinese</h1>
 
     <label for = "tiri">Inserisci il numero di lanci: </label>
     <input type="number" id="tiri">
 
-    <div class="button">
-        <button onclick="inizia_partita()">Tira entrambi</button>
-    </div>
+    <button onclick="inizia_partita()">Tira entrambi</button>
     
     <h3>Giocatore 1</h3>
     <p id="out1"></p>
@@ -68,6 +131,8 @@
     <h3>Vincitore: </h3>
 
     <p id="out5"></p>
+    
+    <p id="out6"></p>
 
     </div>
 
@@ -78,6 +143,9 @@
         let interval = 0;
         let punteggio_giocatore1 = 0;
         let punteggio_giocatore2 = 0;
+        let vittorie_giocatore1 = 0; 
+        let vittorie_giocatore2 = 0;
+        let pareggi = 0;
 
         function inizia_partita() {
 
@@ -92,7 +160,7 @@
                 interval = 0; 
                 finisci_partita();
             }
-        }, 100); 
+        }, 3000); 
     }
 }
         function tira_entrambi() {
@@ -144,22 +212,21 @@
 
             clearInterval(interval);
             interval = 0;
-            document.getElementById("out1").innerHTML = "";
-            document.getElementById("out2").innerHTML = "";
-            document.getElementById("out3").innerHTML = "";
-            document.getElementById("out1").style.display = "none";
-            document.getElementById("out2").style.display = "none";
-            document.getElementById("out3").style.display = "none";
 
             if (punteggio_giocatore1 == punteggio_giocatore2) {
                 document.getElementById("out5").innerHTML = "Pareggio!";
+                pareggi += 1;
             }
             else if (punteggio_giocatore1 > punteggio_giocatore2) {
                 document.getElementById("out5").innerHTML = "Il Giocatore 1 vince!";
+                vittorie_giocatore1 += 1;
             }
             else if (punteggio_giocatore2 > punteggio_giocatore1) {
                 document.getElementById("out5").innerHTML = "Il Giocatore 2 vince!";
+                vittorie_giocatore2 += 1;
             }
+
+            document.getElementById("out6").innerHTML = "Vittorie Giocatore 1: " + vittorie_giocatore1 + "<br> Vittorie Giocatore 2: " + vittorie_giocatore2 + "<br> Pareggi: " + pareggi;
 
         }
 
