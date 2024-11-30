@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +6,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Morra Array 1</title>
     <style>
+
         body {
+            margin: 10px;
             font-family: 'Arial', sans-serif;
             text-align: center;
             align-items: center;
@@ -16,50 +17,86 @@
             margin-top: 1%;
         }
 
-        #out1, #out2, #out3 {
+        #out1, #out2, #out3, #out4, #out5{
+            font-family: 'Courier New', Courier, monospace;
             font-size: 20px;
             margin-top: 10px;
         }
 
-
+        .container {
+            width: auto;
+            text-align: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            margin-top: 1%;
+            padding: 10%;
+            border: 1px solid green;
+            border-radius: 5px;
+            
+            
+        }
         
     </style>
 </head>
 
 <body>
 
+    <div class="container">
     <h1>Morra Cinese</h1>
 
+    <label for = "tiri">Inserisci il numero di lanci: </label>
+    <input type="number" id="tiri">
+
+    <div class="button">
+        <button onclick="inizia_partita()">Tira entrambi</button>
+    </div>
+    
     <h3>Giocatore 1</h3>
     <p id="out1"></p>
 
     <h3>Giocatore 2</h3>
     <p id="out2"></p>
 
-    <h3>Punteggio finale</h3>
+    <h3>Punteggio singolo lancio</h3>
     <p id="out3"></p>
 
-    <div class="button">
-        <button onclick="iniziaPartita()">Tira entrambi</button>
-    </div>
+    <h3>Punteggio Finale</h3>
 
-    <div class="button">
-        <button onclick="finisci_partita()">Interrompi partita</button>
+    <p id="out4"></p>
+
+    <h3>Vincitore: </h3>
+
+    <p id="out5"></p>
+
     </div>
 
     <script>
         let morra_array = ["Sasso", "Carta", "Forbice"];
         let giocatore1;
         let giocatore2;
-        let intervalId = 0;
+        let interval = 0;
+        let punteggio_giocatore1 = 0;
+        let punteggio_giocatore2 = 0;
 
-        function iniziaPartita() {
-            if (intervalId === 0) {
-                intervalId = setInterval(tira_entrambi, 1000); 
+        function inizia_partita() {
+
+            if (interval === 0) {
+                let numero_tiri = document.getElementById("tiri").value;
+                let count = 0;  
+                interval = setInterval(function() {
+                tira_entrambi(); 
+                count++;
+            if (count >= numero_tiri) {
+                clearInterval(interval); 
+                interval = 0; 
+                finisci_partita();
             }
-        }
-
+        }, 100); 
+    }
+}
         function tira_entrambi() {
+
             let numero_casuale1 = Math.floor(Math.random() * 3);
             giocatore1 = morra_array[numero_casuale1];
             document.getElementById("out1").innerHTML = "Il giocatore 1 ha scelto " + giocatore1;
@@ -79,7 +116,6 @@
                 document.getElementById("out3").innerHTML = "Entrambi i giocatori devono fare il tiro!";
                 return;
             }
-
             if (giocatore1 === giocatore2) {
                 risultato = risultato_array[0];
             } else if (
@@ -93,17 +129,38 @@
             }
 
             document.getElementById("out3").innerHTML = risultato;
+
+            if (risultato === risultato_array[1]) {
+                punteggio_giocatore1++;
+            } else if (risultato === risultato_array[2]) {
+                punteggio_giocatore2++;
+            }
+            
+            document.getElementById("out4").innerHTML = "Punteggio Giocatore 1: " + punteggio_giocatore1 + "<br> Punteggio Giocatore 2: " + punteggio_giocatore2;
+
         }
 
         function finisci_partita() {
-            clearInterval(intervalId);
-            intervalId = 0;
+
+            clearInterval(interval);
+            interval = 0;
             document.getElementById("out1").innerHTML = "";
             document.getElementById("out2").innerHTML = "";
             document.getElementById("out3").innerHTML = "";
             document.getElementById("out1").style.display = "none";
             document.getElementById("out2").style.display = "none";
             document.getElementById("out3").style.display = "none";
+
+            if (punteggio_giocatore1 == punteggio_giocatore2) {
+                document.getElementById("out5").innerHTML = "Pareggio!";
+            }
+            else if (punteggio_giocatore1 > punteggio_giocatore2) {
+                document.getElementById("out5").innerHTML = "Il Giocatore 1 vince!";
+            }
+            else if (punteggio_giocatore2 > punteggio_giocatore1) {
+                document.getElementById("out5").innerHTML = "Il Giocatore 2 vince!";
+            }
+
         }
 
     </script> 
