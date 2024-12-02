@@ -51,7 +51,7 @@
         width: 100%;
         padding: 14px;
         margin-bottom: 20px;
-        font-size: 18px;
+        font-size: medium;
         border: 2px solid #ddd;
         border-radius: 8px;
         box-sizing: border-box;
@@ -100,11 +100,23 @@
         margin-top: 8px;
     }
 
-    #out1, #out2, #out3, #out4, #out5, #out6 {
+    #out3, #out4, #out5, #out6, #out7 {
         font-family: 'Courier New', Courier, monospace;
         font-size: 20px;
         margin-top: 8px;
         color: #333;
+    }
+
+    #out1, #out2 {
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 20px;
+        margin-top: 8px;
+        color: #333;
+        margin-right: 8px;
+        }
+
+    #out7 {
+        margin-top: 16px;
     }
 
     .reset-button {
@@ -129,6 +141,19 @@
         background-color: #a93226;
         box-shadow: 0 4px #666;
         transform: translateY(2px);
+    }
+
+    .image-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+    .image-text img {
+        width: 30px;  
+        height: 30px;
+        margin-left: 10px;
     }
 
     @media (max-width: 768px) {
@@ -158,7 +183,7 @@
             font-size: 18px;
         }
 
-        #out1, #out2, #out3, #out4, #out5, #out6 {
+        #out1, #out2, #out3, #out4, #out5, #out6, #out7 {
             font-size: 18px;
         }
 
@@ -195,9 +220,20 @@
             font-size: 16px;
         }
 
-        #out1, #out2, #out3, #out4, #out5, #out6 {
+        #out3, #out4, #out5, #out6, #out7 {
             font-size: 16px;
         }
+
+        #out1, #out2 {
+            font-size: 14px;
+            margin-right: 4px;
+        }
+        #out7 {
+            margin-top: 8px;
+            margin-bottom: 0;
+        }
+
+        
 
         .reset-button {
             padding: 10px 20px;
@@ -215,10 +251,11 @@
     <h1>Morra Cinese</h1>
 
     <label for = "tiri">Inserisci il numero di lanci: </label>
-    <input type="number" id="tiri">
+    <input type="number" id="tiri" placeholder="Inserisci un numero">
 
     <button onclick="inizia_partita()">Inizia la partita</button>
-    
+
+    <p id="out7">Tiri effettuati: 0</p>
     
     <h3>Giocatore 1</h3>
     <p id="out1">-</p>
@@ -254,7 +291,15 @@
         let vittorie_giocatore2 = 0;
         let pareggi = 0;
 
+        const immagini = {
+            "Sasso": "fist.png", 
+            "Carta": "hand-paper.png", 
+            "Forbice": "scissor.png",  
+        };
+
         function inizia_partita() {
+
+            document.getElementById("out7").innerHTML = "Tiri effettuati: 0"
 
             let numero_tiri = document.getElementById("tiri").value;
 
@@ -274,6 +319,7 @@
                 interval = setInterval(function() {
                 tira_entrambi(); 
                 count++;
+                document.getElementById("out7").innerHTML = `Tiri effettuati: ${count}`;
             if (count >= numero_tiri) {
                 clearInterval(interval); 
                 interval = 0; 
@@ -286,11 +332,13 @@
 
             let numero_casuale1 = Math.floor(Math.random() * 3);
             giocatore1 = morra_array[numero_casuale1];
-            document.getElementById("out1").innerHTML = "Il giocatore 1 ha scelto " + giocatore1;
+            document.getElementById("out1").innerHTML = `<span class="image-text">Il giocatore 1 ha tirato<img src="${immagini[giocatore1]}" alt="${giocatore1}"></span>`;
+
 
             let numero_casuale2 = Math.floor(Math.random() * 3);
             giocatore2 = morra_array[numero_casuale2];
-            document.getElementById("out2").innerHTML = "Il giocatore 2 ha scelto " + giocatore2;
+            document.getElementById("out2").innerHTML = `<span class="image-text">Il giocatore 2 ha tirato <img src="${immagini[giocatore2]}" alt="${giocatore2}"></span>`;
+
 
             risultato_morra();
         }
@@ -370,6 +418,7 @@
             document.getElementById("out4").innerHTML = "-";
             document.getElementById("out5").innerHTML = "-";
             document.getElementById("out6").innerHTML = "";
+            document.getElementById("out7").innerHTML = "Tiri effettuati: 0";
         }
 
     </script> 
