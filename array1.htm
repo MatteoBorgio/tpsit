@@ -15,30 +15,134 @@
 
     <p>Sviluppo algoritmi che inseriscono numeri particolari negli array</p>
 
-    <p>Lista numeri: </p>
+    <p>Lista di 100 numeri casuali: </p>
 
     <p id="out1"></p>
+    
+    <p>Lista di 100 numeri consecutivi da 1 a 1000: </p>
+
+    <p id="out2"></p>                       
+    
+    <p>Lista di 100 numeri primi casuali: </p>
+
+    <p id="out3"></p>
+
+    <p>Lista dei numeri primi da 1 a 100: </p>
+
+    <p id="out4"></p>
+
+    <p>Lista dei numeri da 1 a 100 con i loro fattori: </p>
+
+    <p id="out5"></p>
+
 
     <script>
-
-        // dichiaro un array
-        let numeri = [];
         
-        function inserisciNumeroCasuale(i) {
+        function numeri_casuali() {
 
-            let numero_casuale = Math.floor(Math.random()*100);     // numero casuale da 1 a 100
+            let numeri = [];
 
-            numeri[i] = numero_casuale                              // numero casuale in posizione i
+            for (let i = 0; i < 100; i++) {
 
+                let numero_casuale = Math.floor(Math.random()*100);     
+
+                numeri.push(numero_casuale);
+                
+            }
+
+            document.getElementById("out1").innerHTML = numeri
 
         }
 
-        for (let i = 0; i < 100; i++) {
-        
-            inserisciNumeroCasuale(i);                                                                  
-        
+        numeri_casuali();
+
+        function numeri_consecutivi() {
+
+            let numeri = [];
+
+            let count = 0;
+
+            let numero_partenza = Math.floor(Math.random()*900);
+
+            for (let i = numero_partenza; i <= 1000; i++) {
+
+                numeri.push(i);
+
+                count++;
+
+                if (count === 101) break;
+
+            }
+
+            document.getElementById("out2").innerHTML = numeri
         }
-            document.getElementById("out1").innerHTML = numeri;     // stampo 100 numeri in out1
+
+        numeri_consecutivi();
+
+        function numeri_primi_casuali() {
+
+            let numeri_primi = [];
+
+            let numeri_non_primi = [];
+
+            for (let i = 0; numeri_primi.length < 100; i++) {
+
+                let numero_casuale = Math.floor(Math.random()*(1000 - 1) + 1);
+
+                for (let j = 2; j < (numero_casuale/2); j++) {
+                    if (numero_casuale % j === 0) {
+                        numeri_non_primi.push(numero_casuale);
+                        break;
+                    }
+                    else {
+                    }
+                }
+
+                if (numeri_non_primi.includes(numero_casuale)) {
+                    numeri_non_primi.push(numero_casuale);
+                }
+                else {
+                    numeri_primi.push(numero_casuale);
+                }
+            
+            }
+
+            document.getElementById("out3").innerHTML = numeri_primi;
+
+        }
+
+        numeri_primi_casuali();
+
+        function numeri_primi_da_1_a_100() {
+
+            let numeri_primi = [];
+
+            for (let i = 2; i <= 100; i++) {
+
+                let isPrime = true;
+
+                for (let j = 2; j < (i/2); j++) {
+                    if (i % j === 0) {
+                        isPrime = false;
+                        break;
+                    }
+                }
+
+                if (isPrime) {
+                    numeri_primi.push(i);
+                }
+            }
+
+            document.getElementById("out4").innerHTML = numeri_primi;
+
+        }
+
+        numeri_primi_da_1_a_100();
+
+        function numeri_consecutivi_fattori() {
+
+            let numeri = [];
+        }
  
     </script>
     
