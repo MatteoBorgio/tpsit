@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esercizio di ripasso</title>
+
+    <style>
+        #red {
+            color: red;
+            background-color: lightgreen;
+        }
+
+
+
+    </style>
+</head>
+<body>
+
+    <p id="out1"></p>
+
+    <script>
+
+        let numeri = [];
+
+        for (let i = 0; i < 1000; i++) {
+            numeri.push(i);
+    }
+        function controllo_multiplo (n, m) {
+            if (n % m == 0) {
+                return true
+            } else {
+                return false
+            }
+        }
+
+        function stampa_array (array) {
+            for (let i = 0; i < array.length; i++) {
+                if (controllo_multiplo (array[i], 7)) {
+                    document.write(`<p id="red"> ${[i+1]} </p>`);
+                } else {
+                    document.write(`<p> ${array[i]} </p>`)
+                }
+                            
+            }
+
+        }
+
+        stampa_array(numeri)
+    </script>
