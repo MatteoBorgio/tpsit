@@ -6,18 +6,86 @@
     <title>Esercizio di ripasso</title>
 
     <style>
-        #red {
-            color: red;
-            background-color: lightgreen;
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
         }
 
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: lightcyan;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
 
+        h1 {
+            text-align: center;
+            color: red;
+            font-weight: 200;
+            font-size: 32px;
+        }
+
+        p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        span {
+            display: inline-block;
+            margin: 0 5px;
+            font-size: 14px;
+            color: #3498db;
+        }
+
+        .counter {
+            font-size: 18px;
+            text-align: center;
+            color: #333;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        #red {
+            color: red;
+        }
+
+        .legenda {
+            margin-left: 10px;
+        }
+
+        .colore-box {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            margin-right: 10px;
+            border: 1px solid #000;
+            padding: 5px;
+            vertical-align: middle;
+        }
+
+        h3 {
+            color: blue;
+        }
 
     </style>
 </head>
 <body>
 
-    <p id="out1"></p>
+    <div class="container">
+
+        <h1>Numeri da 1 a 100 primi e non primi</h1>
+        <p id="out1"></p>
+        <div class="counter" id="counter"></div>
+        
+    </div>
 
     <script>
 
@@ -25,21 +93,32 @@
 
         for (let i = 0; i < 1000; i++) {
             numeri.push(i);
-    }
-        function controllo_multiplo (n, m) {
-            if (n % m == 0) {
-                return true
-            } else {
-                return false
-            }
         }
 
+        
+        function IsPRIME(n) {
+
+            
+            if (n <= 1) return false;
+
+            for (let i = 2; i <= (n/2); i++) {
+
+                if (n % i === 0) {
+                    return false;
+                }
+                }
+            return true;
+
+                }
+
         function stampa_array (array) {
+
             for (let i = 0; i < array.length; i++) {
-                if (controllo_multiplo (array[i], 7)) {
-                    document.write(`<p id="red"> ${[i+1]} </p>`);
+
+                if (IsPRIME(array[i])) {
+                    document.write(`<span id="red"> ${array[i]}, </span>`);
                 } else {
-                    document.write(`<p> ${array[i]} </p>`)
+                    document.write(`<span> ${array[i]}, </span>`)
                 }
                             
             }
@@ -48,3 +127,15 @@
 
         stampa_array(numeri)
     </script>
+
+    <div class="legenda">
+
+    <h3>Legenda:</h3>
+    <div><span class="colore-box" style="background-color: #a8d9fa"></span> Numeri non primi</div>
+    <div><span class="colore-box" style="background-color: red"></span> Numeri primi</div>
+
+    </div>
+
+</body>
+
+</html>
