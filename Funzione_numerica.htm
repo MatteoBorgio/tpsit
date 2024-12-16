@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funzione di analisi numerica</title>
+
+
+
+</head>
+<body>
+
+    <h2>Funzione di analisi numerica</h2>
+
+    <script>
+
+        function isPrime(num) {
+            if (num <= 1) return true;
+            for (let i = 2; i <= Math.sqrt(num); i++) {
+                if (num % i === 0) return false;
+            }
+            return true;
+        }
+
+        function getNumber(num) {
+
+            let stringa_pari = "";
+            let stringa_primi = "";
+
+            const doppio = num * 2;
+            let stringa_doppio = `Doppio: ${doppio} `;
+            const metà_intera = Math.floor(num / 2);
+            let stringa_metà_intera = `Metà intera: ${metà_intera} `;
+            const complemento = 1000 - num
+            let stringa_complemento = `Complemento: ${complemento} `;
+            const somma = num + num + 1 + num - 1
+            let stringa_somma = `Somma del numero con precedente e successivo: ${somma} `;
+            const pi_greco = (num * 3.14).toFixed(2) 
+            let stringa_pi_greco = `Numero moltiplicato al pi greco: ${pi_greco} `;
+            const due_settantuno = (num * 2.71).toFixed(2) 
+            let stringa_due_settantuno = `Numero moltiplicato per 2,71: ${due_settantuno} `;
+
+            if (num % 2 == 0) {
+                stringa_pari = `Pari/dispari: pari `;
+            }
+            else {
+                stringa_pari = `Pari/dispari: dispari `;
+            }
+            if (isPrime(num)) {
+                stringa_primi = `Il numero ${num} è primo `;
+            }
+            else {
+                stringa_primi = `Il numero ${num} non è primo `;
+            }
+
+            let stringa_definitiva = stringa_pari + stringa_primi + stringa_doppio + stringa_metà_intera + stringa_complemento + stringa_somma + stringa_pi_greco + stringa_due_settantuno;
+
+            return stringa_definitiva;
+        }
+
+        function main() {
+            for (let i = 0; i < 10001; i++) {
+                document.write(getNumber(i) + "<br>");
+        }
+    }
+
+    main();
+
+        
+
+    </script>
+</body>
+</html>
