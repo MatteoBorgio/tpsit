@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisi Numerica array 1</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+    
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2d3b45;
+            margin-bottom: 20px;
+        }
+    
+        p {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 20px;
+        }
+    
+        button {
+            background-color: green;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin: 10px;
+        }
+    
+        button:hover {
+            background-color: darkgreen;
+        }
+    
+        .output-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 15px;
+            margin-top: 20px;
+        }
+    
+        p#out1, p#out2, p#out3, p#out4, p#out5 {
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            min-height: 100px;
+            max-width: 90%;
+            margin-left: 10px;
+            overflow-wrap: break-word;
+            text-align: left;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            color: #333;
+        }
+    
+        .evidenza {
+            background-color: white;
+            font-weight: bold;
+            color: #000;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+    
+            h1 {
+                font-size: 2rem;
+            }
+    
+            button {
+                width: 100%;
+                padding: 12px;
+                font-size: 1.1rem;
+            }
+    
+            p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+
+</head>
+<body>
+
+    <h1>Analisi Numerica Array 1</h1>
+
+    <p>Imparo ad usare array con i numeri</p>
+
+    <p>Sviluppo algoritmi che inseriscono numeri particolari negli array</p>
+
+    <button type="button" onclick="numeri_casuali()">Lista di 100 numeri casuali: </button>
+
+    <p id="out1"></p>
+    
+    <button type="button" onclick="numeri_consecutivi()">Lista di 100 numeri consecutivi da 1 a 1000:</button>
+
+    <p id="out2"></p>                       
+    
+    <button type="button" onclick="numeri_primi_casuali()">Lista di 10 numeri primi casuali: </button>
+
+    <p id="out3"></p>
+
+    <button type="button" onclick="numeri_primi_da_1_a_100()">Lista dei numeri primi da 1 a 100: </button>
+
+    <p id="out4"></p>
+
+    <button type="button" onclick="numeri_consecutivi_fattori()">Lista dei numeri da 1 a 100 con accanto i loro fattori: </button>
+
+    <p id="out5"></p>
+
+    <script>
+        
+        function numeri_casuali() {
+
+            let numeri = [];
+
+            for (let i = 0; i < 100; i++) {
+
+                let numero_casuale = Math.floor(Math.random()*100);     
+
+                numeri.push(numero_casuale);
+                
+            }
+
+            document.getElementById("out1").innerHTML = numeri
+
+        }
+
+        function numeri_consecutivi() {
+
+            let numeri = [];
+
+            let count = 0;
+
+            let numero_partenza = Math.floor(Math.random()*900);
+
+            for (let i = numero_partenza; i <= 1000; i++) {
+
+                numeri.push(i);
+
+                count++;
+
+                if (count === 101) break;
+
+            }
+
+            document.getElementById("out2").innerHTML = numeri
+        }
+
+        function numeri_primi_casuali() {
+
+            let numeri_primi = [];
+
+            let numeri_non_primi = [];
+
+            for (let i = 0; numeri_primi.length < 10; i++) {
+
+                let numero_casuale = Math.floor(Math.random()*(1000 - 1) + 1);
+
+                for (let j = 2; j < (numero_casuale/2); j++) {
+                    if (numero_casuale % j === 0) {
+                        numeri_non_primi.push(numero_casuale);
+                        break;
+                    }
+                    else {
+                    }
+                }
+
+                if (numeri_non_primi.includes(numero_casuale)) {
+                    numeri_non_primi.push(numero_casuale);
+                }
+                else {
+                    numeri_primi.push(numero_casuale);
+                }
+            
+            }
+
+            document.getElementById("out3").innerHTML = numeri_primi;
+
+        }
+
+        function numeri_primi_da_1_a_100() {
+
+            let numeri_primi = [];
+
+            for (let i = 2; i <= 100; i++) {
+
+                let isPrime = true;
+
+                for (let j = 2; j < (i/2); j++) {
+                    if (i % j === 0) {
+                        isPrime = false;
+                        break;
+                    }
+                }
+
+                if (isPrime) {
+                    numeri_primi.push(i);
+                }
+            }
+
+            document.getElementById("out4").innerHTML = numeri_primi;
+
+        }
+
+        function numeri_consecutivi_fattori() {
+            let numeri = [];  
+
+        for (let i = 1; i <= 100; i++) {
+
+            let fattori = [1];
+
+            for (let j = 1; j <= i; j++) {
+
+                if (i % j === 0) {
+
+                    fattori.push(j);
+
+            }
+        }
+
+        let numeriFattori = `<span class="evidenza">${i}</span>: ${fattori.slice(1).join(', ')}`;
+        
+        numeri.push(numeriFattori); 
+    }
+
+    document.getElementById("out5").innerHTML = numeri.join('<br> ');
+
+}
+    </script>
+    
+</body>
+</html>
