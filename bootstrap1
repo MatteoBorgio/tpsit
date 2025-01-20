@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lezione Bootstrap</title>
+    <!-- CSS di Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+<div class="container my-3 text-center">
+    <h1>La mia prima pagina con bootstrap</h1>
+    <div class="row">
+        <div class="col my-3"><p class="lead">Il grid system</p></div>
+        <div class="col my-3"><p class="lead">è organizzato</p></div>
+        <div class="col my-3"><p class="lead">in colonne</p></div>
+    </div>
+</div>
+
+<div class="container my-3">
+    <div class="row">
+        <div class="col-md-3">Una riga è divisa in 12 colonne</div>
+        <div class="col-md-5">md (medium) stablisce la grandezza della colonna</div>
+        <div class="col-md-1">md-3 significa che la colonna occuperà 1/4 della riga</div>
+        <div class="col-md-3">ad esempio questa colonna occupa 3/12 della riga</div>
+    </div>
+</div>
+
+<button class="btn btn-primary">Primario</button>
+<button class="btn btn-secondary">Secondario</button>
+
+<div class="container">
+    <p class="lead">Esempio di utilizzo delle card</p>
+    <div class="row">
+    <div class="card" style="width: 18rem;">
+    <img src="https://via.placeholder.com/150" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">Prima Card</h5>
+        <p class="card-text">Testo della card.</p>
+        <a href="#" class="btn btn-primary">Vai</a>
+    </div>
+</div>
+<div class="card md-3" style="width: 18rem;">
+    <img src="https://via.placeholder.com/150" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">Seconda Card</h5>
+        <p class="card-text">Testo della card.</p>
+        <a href="#" class="btn btn-primary">Vai</a>
+    </div>
+</div>
+<div class="card" style="width: 18rem;">
+    <img src="https://via.placeholder.com/150" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">Terza card</h5>
+        <p class="card-text">Testo della card.</p>
+        <a href="#" class="btn btn-primary">Vai</a>
+    </div>
+</div>
+</div>
+</div>
+<p class="lead">Esempio di una navbar</p>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Brand</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link active" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+</body>
+</html>
