@@ -1,11 +1,11 @@
 function getRandomColor() {
     const colors = ["red", "green", "blue", "yellow"];
-    colors_index = Math.round(Math.random() * colors.length)
-    let color = colors[colors_index]
+    const colors_index = Math.floor(Math.random() * colors.length); // Usa Math.floor()
+    let color = colors[colors_index];
     return color;
 }
 
-function changeButtonColor() {
-    const button = document.getElementById('myButton');
+function changeButtonColor(buttonId) {
+    const button = document.getElementById(buttonId);
     button.style.backgroundColor = getRandomColor();
 }
