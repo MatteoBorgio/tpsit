@@ -1,6 +1,6 @@
 function getRandomColor() {
     const colors = ["red", "green", "blue", "yellow"];
-    const colors_index = Math.floor(Math.random() * colors.length); // Usa Math.floor()
+    const colors_index = Math.floor(Math.random() * colors.length); 
     let color = colors[colors_index];
     return color;
 }
