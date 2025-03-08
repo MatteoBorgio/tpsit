@@ -1,0 +1,35 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#container {
+    padding: 5%;
+}
+
+.mb-3 {
+    width: 50%;
+}
+
+#container h1 {
+    margin-bottom: 3%;
+    font-weight: bold;
+}
+
+#container p {
+    margin-top: 2%;
+}
+
+#container select {
+    width: 30%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+#container textarea {
+    margin-bottom: 2%;
+    width: 70%;
+}
+
+#container button {
+    width: 10%;
+}
