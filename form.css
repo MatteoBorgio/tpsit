@@ -1,0 +1,12 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#container {
+    margin: 4%;
+}
+
+#container input {
+    width: 20%;
+}
+
