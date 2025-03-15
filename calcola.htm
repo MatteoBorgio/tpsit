@@ -27,31 +27,23 @@
 
         function calcola_somma(stringa1, stringa2) {
             lunghezza = stringa1.length + stringa2.length;
-            if (lunghezza > 20) {
-                alert("B troppo lunga!")
+            if (stringa2.length > 20) {
+                return document.getElementById("sum_str").innerHTML = `A e B unite: ${lunghezza}<br>!B è troppo lunga`;
+            }
+            else {
+                return document.getElementById("sum_str").textContent = `A e B unite: ${lunghezza}`;
             }
         }
 
         document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("output").textContent = `A: ${a}\nB: ${b}`;
-        });
-
-        document.addEventListener("DOMContentLoaded", function(){
             document.getElementById("output_len").textContent = `Lunghezza di A: ${a.length} \nLunghezza di B: ${b.length}`;
-        })
-
-        document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("reverse_str").textContent = `A al contrario: ${reverse_string(a)} B al contrario: ${reverse_string(b)}`
-        })
-
-        document.addEventListener("DOMContentLoaded", function() {
-            document.getElementById("join_str").textContent = `A e B unite: ${a + b}`
-        })
-
-        document.addEventListener("DOMContentLoaded", function() {
-            document.getElementById("sum_str").textContent = `${calcola_somma(a, b)}`
-        })
+            document.getElementById("join_str").innerHTML = `A e B unite: ${a + b}`
+            calcola_somma(a, b);
+        });
 
     </script>
 </body>
 </html>
+
