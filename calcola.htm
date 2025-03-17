@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ricezione Dati</title>
+    <link rel="stylesheet" href="calcola.css">
 </head>
 <body>
     <h2>Dati ricevuti:</h2>
@@ -28,17 +29,17 @@
         function calcola_somma(stringa1, stringa2) {
             lunghezza = stringa1.length + stringa2.length;
             if (stringa2.length > 20) {
-                return document.getElementById("sum_str").innerHTML = `A e B unite: ${lunghezza}<br>!B è troppo lunga`;
+                return document.getElementById("sum_str").innerHTML = `Lunghezza di A e B unite: ${lunghezza}<br>!B è troppo lunga`;
             }
             else {
-                return document.getElementById("sum_str").textContent = `A e B unite: ${lunghezza}`;
+                return document.getElementById("sum_str").textContent = `Lunghezza di A e B unite: ${lunghezza}`;
             }
         }
 
         document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("output").textContent = `A: ${a}\nB: ${b}`;
-            document.getElementById("output_len").textContent = `Lunghezza di A: ${a.length} \nLunghezza di B: ${b.length}`;
-            document.getElementById("reverse_str").textContent = `A al contrario: ${reverse_string(a)} B al contrario: ${reverse_string(b)}`
+            document.getElementById("output_len").textContent = `Lunghezza di A: ${a.length}; \nLunghezza di B: ${b.length}`;
+            document.getElementById("reverse_str").textContent = `A al contrario: ${reverse_string(a)}; B al contrario: ${reverse_string(b)}`
             document.getElementById("join_str").innerHTML = `A e B unite: ${a + b}`
             calcola_somma(a, b);
         });
@@ -46,4 +47,3 @@
     </script>
 </body>
 </html>
-
