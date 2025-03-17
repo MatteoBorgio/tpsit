@@ -1,0 +1,49 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+form {
+    padding-left: 1%;
+    font-style: italic;
+}
+
+h1 {
+    font-family:'Times New Roman', Times, serif;
+    margin-left: 1%;
+}
+
+input {
+    margin: 0.5%;
+    padding: 0.3%;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+input:focus {
+    border: 2px solid #111311;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 7, 0, 0.6);
+  }
+  
+.submit-btn {
+    background-color: blue;
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    margin-top: 0.7%;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s ease;
+  }
+  
+  .submit-btn:hover {
+    background-color: rgb(28, 28, 160);
+    transform: translateY(-3px);
+  }
+  
+  .submit-btn:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(4, 0, 128, 0.8);
+  }
+  
