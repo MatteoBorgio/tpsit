@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attivazione funzione su array di input</title>
+    <link rel="stylesheet" href="funzione_array.css">
+</head>
+<body>
+    <h1>Inserisci 4 numeri</h1>
+
+    <form id="form1">
+        
+        <label for="num1">Primo numero: </label>
+        <input type="number" id="num1" required placeholder="Inserisci il primo numero"><br>
+
+        <label for="num2">Secondo numero: </label>
+        <input type="number" id="num2" required placeholder="Inserisci il secondo numero"><br>
+
+        <label for="num3">Terzo numero: </label>
+        <input type="number" id="num3" required placeholder="Inserisci il terzo numero"><br>
+
+        <label for="num4">Quarto numero: </label>
+        <input type="number" id="num4" required placeholder="Inserisci il quarto numero"><br>
+
+        <button type="submit">Submit</button>
+
+    </form>
+
+    <p id="out_input"></p>
+    <p id="out_function"></p>
+
+    <script>
+
+        
+        function IA_base_F1(array) {
+            const output = [-1, 0];
+            return output
+        }
+        
+        document.getElementById("form1").addEventListener("submit", () => { 
+            event.preventDefault();
+            let num1 = parseFloat(document.getElementById("num1").value);
+            let num2 = parseFloat(document.getElementById("num2").value);
+            let num3 = parseFloat(document.getElementById("num3").value);
+            let num4 = parseFloat(document.getElementById("num4").value);
+
+            const inputArray = [num1, num2, num3, num4];
+            const arrOut1 = IA_base_F1(inputArray);
+
+            document.getElementById("out_input").innerText = "Input: " +  inputArray;
+            document.getElementById("out_function").innerText = "Risultato: " + arrOut1;
+        }
+        )
+
+    </script>
+</body>
+</html>

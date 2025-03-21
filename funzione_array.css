@@ -1,0 +1,23 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 2%;
+    border: 2px solid black;
+}
+
+input {
+    padding: 0.4%;
+    margin: 0.5%;
+    width: 25%;
+}
+
+button {
+    padding: 0.5%;
+    background-color: rgb(12, 174, 228);
+    color: white;
+    width: 10%;
+    font-size: large;
+    margin-top: 1%;
+    border-radius: 10px;
+    padding-bottom: 1%;
+    padding-top: 1%;
+}
