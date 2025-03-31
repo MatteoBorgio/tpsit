@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esercizio Temporizzatori 1</title>
+    <style>
+
+        #quadrato1 {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background-color: blue;
+            border: 2px solid black;
+            
+        }
+        #quadrato2 {
+            position: absolute;
+            left: 200px;
+            width: 150px;
+            height: 150px;
+            background-color: yellow;
+            border: 2px solid black;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="quadrato1"></div>
+    <div id="quadrato2"></div>
+
+    <script>
+        function muovi() {
+            var quadrato1 = document.getElementById("quadrato1");
+            var quadrato2 = document.getElementById("quadrato2");
+
+            var quadrato1_x = parseInt(Math.random()* (window.innerWidth - 150));
+            var quadrato1_y = parseInt(Math.random()* (window.innerHeight - 150));
+
+            quadrato1.style.left = quadrato1_x + "px";
+            quadrato1.style.top = quadrato1_y + "px";
+
+            var quadrato2_x = parseInt(quadrato2.offsetLeft);
+            var quadrato2_y = parseInt(quadrato2.offsetTop);
+
+            quadrato2_x = parseInt(Math.random()* (window.innerWidth - 150));
+            quadrato2_y = parseInt(Math.random()* (window.innerHeight - 150));
+
+            quadrato2.style.left = quadrato2_x + "px";
+            quadrato2.style.top = quadrato2_y + "px";
+
+            let max_x = Math.max(quadrato1_x, quadrato2_x);
+            let min_x = Math.min(quadrato1_x, quadrato2_x);
+
+            let max_y = Math.max(quadrato1_y, quadrato2_y);
+            let min_y = Math.min(quadrato1_y, quadrato2_y);
+
+            quadrato1.style.backgroundColor = 'blue';
+            quadrato2.style.backgroundColor = 'yellow';
+
+            if ((max_x - min_x) < 150 && (max_y - min_y) < 150) {
+                quadrato1.style.backgroundColor = "red";
+                quadrato2.style.backgroundColor = "red";
+            }
+        }
+        setInterval(muovi, 1000);
+    </script>
+</body>
+</html>
