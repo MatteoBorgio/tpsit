@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numeri Casuali</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        input {
+            border-radius: 5px;
+            padding: 5px;
+        }
+        label {
+            margin-left: 20px;
+        }
+        #output {
+            font-family: 'Courier New', Courier, monospace;
+            margin-top: 20px;
+            margin: 20px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            padding: 20px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 28px;
+            box-shadow: 4px 4px 10px gray;
+        }
+        button {
+            margin-left: 20px;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: lightblue;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Generatore di Numeri Casuali</h1>
+    <label for="min">Min:</label>
+    <input type="number" id="min" value="1">
+    <label for="max">Max:</label>
+    <input type="number" id="max" value="100">
+    <button onclick="generaNumeri()">Genera</button>
+    <div id="output"></div>
+   
+    <script>
+        function generaNumeri() {
+            const min = parseInt(document.getElementById('min').value, 10);
+            const max = parseInt(document.getElementById('max').value, 10);
+            if (isNaN(min) || isNaN(max) || min >= max) {
+                alert("Inserisci un intervallo valido.");
+                return;
+            }
+           
+            let numeri = new Array();
+            for (let i = 0; i < max - min; i++) {
+                let numero_casuale = Math.random() * (max - min) + min;
+                numeri.push(parseFloat(numero_casuale.toFixed(2)))
+            }
+            let somma = 0;
+            for (let j = 0; j < 50; j++) {
+                somma += numeri[j]
+            } 
+            let media = parseFloat((somma / 50).toFixed(2))
+            document.getElementById('output').innerHTML = numeri + "\n Media dei primi 50 numeri: " + media;
+        }
+    </script>
+</body>
+</html>
