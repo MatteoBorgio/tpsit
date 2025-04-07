@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Esercizio temporizzatori 2</title>
+  <style>
+    #quadrato {
+      position: absolute;
+      background-color: green;
+      width: 50px;
+      height: 50px;
+      left: 0;
+      top: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="quadrato"></div>
+  <script>
+    let segmento = 500;
+    let fase = "destra"; 
+    let quadrato = document.getElementById("quadrato");
+
+    function muovi(){
+      let x = quadrato.offsetLeft;
+      let y = quadrato.offsetTop;
+
+      if (fase === "destra") {
+        if (x < segmento) {
+          quadrato.style.left = (x + 5) + "px";
+        } else {
+          fase = "giu";
+        }
+      } else if (fase === "giu") {
+        if (y < segmento) {
+          quadrato.style.top = (y + 5) + "px";
+        } else {
+          fase = "sinistra";
+        }
+      } else if (fase === "sinistra") {
+        if (x > 0) {
+          quadrato.style.left = (x - 5) + "px";
+        } else {
+          fase = "su";
+        }
+      } else if (fase === "su") {
+        if (y > 0) {
+          quadrato.style.top = (y - 5) + "px";
+        } else {
+          fase = "destra";
+        }
+      }
+    }
+
+    setInterval(muovi, 30);
+  </script>
+</body>
+</html>
