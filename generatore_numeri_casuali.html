@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generatore di numeri casuali</title>
+</head>
+<body>
+    <div class="container">
+        <p id="numeri_casuali"></p>
+        <p id="media_numeri"></p>
+    </div>
+    <script> 
+        let arrayNumeriCasuali = new Array();
+        let count = 0;
+        let numeri_casuali = document.getElementById("numeri_casuali");
+        let mostra_media = document.getElementById("media_numeri");
+        function generaNumeriCasuali() {
+            nuovo_numero = Math.floor(Math.random() * 100);
+            arrayNumeriCasuali.push(nuovo_numero);
+            count++;
+            let somma = 0;
+            let media = 0;
+            for (let i = 0; i < arrayNumeriCasuali.length; i++) {
+                somma += arrayNumeriCasuali[i];
+            }
+            if (count === 50) {
+                media = somma / arrayNumeriCasuali.length;
+                media.toFixed(2);
+                mostra_media.textContent = "La media è: " + media;
+                count = 0;
+            }
+        }
+
+        setInterval(generaNumeriCasuali, 500)
+            
+    </script>
+</body>
+</html>
