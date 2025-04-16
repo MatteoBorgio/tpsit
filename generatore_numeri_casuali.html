@@ -4,36 +4,96 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generatore di numeri casuali</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="container">
         <p id="numeri_casuali"></p>
         <p id="media_numeri"></p>
+        <p id="divisioni"></p>
+        <p id="distanze"></p>
+        <canvas id="graficoNumeri" width="400" height="200"></canvas>
     </div>
-    <script> 
-        let arrayNumeriCasuali = new Array();
+    <script>
+        let arrayNumeriCasuali = [];
         let count = 0;
+        let array_divisioni = [];
+        let array_distanze = [];
+        let divisioni = document.getElementById("divisioni");
         let numeri_casuali = document.getElementById("numeri_casuali");
         let mostra_media = document.getElementById("media_numeri");
+        let distanze = document.getElementById("distanze");
+
+        const L1 = 0;
+        const L2 = 100;
+
+        const ctx = document.getElementById('graficoNumeri').getContext('2d');
+        const chart = new Chart(ctx, {
+            type: 'line', // Tipo di grafico
+            data: {
+                labels: [], // Etichette (es. numeri generati)
+                datasets: [{
+                    label: 'Numeri Casuali',
+                    data: [], // Dati del grafico
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 2,
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Indice'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Valore'
+                        },
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
         function generaNumeriCasuali() {
-            nuovo_numero = Math.floor(Math.random() * 100);
+            let nuovo_numero = Math.floor(Math.random() * (L2 - L1)) + L1;
             arrayNumeriCasuali.push(nuovo_numero);
             count++;
-            let somma = 0;
-            let media = 0;
-            for (let i = 0; i < arrayNumeriCasuali.length; i++) {
-                somma += arrayNumeriCasuali[i];
+
+            chart.data.labels.push(arrayNumeriCasuali.length); 
+            chart.data.datasets[0].data.push(nuovo_numero); 
+            chart.update(); 
+
+            let media = (L2 - L1) / 2;
+            let distanza = Math.abs(nuovo_numero - media);
+            array_distanze.push(distanza);
+
+            if (arrayNumeriCasuali.length > 1) {
+                let divisione = (arrayNumeriCasuali[arrayNumeriCasuali.length - 1] /
+                                 arrayNumeriCasuali[arrayNumeriCasuali.length - 2]).toFixed(2);
+                if (divisione === "Infinity") {
+                    divisione = "Impossibile";
+                }
+                array_divisioni.push(divisione);
             }
+            numeri_casuali.textContent = "Numeri casuali: " + arrayNumeriCasuali.join(", ");
+            divisioni.textContent = "Divisioni: " + array_divisioni.join(", ");
+            distanze.textContent = "Distanze dalla metà del range: " + array_distanze.join(", ");
+
             if (count === 50) {
-                media = somma / arrayNumeriCasuali.length;
-                media.toFixed(2);
+                let somma = arrayNumeriCasuali.reduce((acc, num) => acc + num, 0);
+                let media = (somma / arrayNumeriCasuali.length).toFixed(2);
                 mostra_media.textContent = "La media è: " + media;
                 count = 0;
             }
         }
 
-        setInterval(generaNumeriCasuali, 500)
-            
+        setInterval(generaNumeriCasuali, 500);
     </script>
 </body>
 </html>
