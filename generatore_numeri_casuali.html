@@ -61,7 +61,7 @@
         });
 
         function generaNumeriCasuali() {
-            let nuovo_numero = Math.floor(Math.random() * (L2 - L1)) + L1;
+            let nuovo_numero = Math.random().toFixed(2);
             arrayNumeriCasuali.push(nuovo_numero);
             count++;
 
